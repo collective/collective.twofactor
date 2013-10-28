@@ -41,6 +41,7 @@ setup(name='collective.twofactor',
       install_requires=[
           'setuptools',
           'plone.api',
+          'twilio',  # XXX: Move this to an extra
           # -*- Extra requirements: -*-
       ],
       extras_require={'test': ['plone.app.testing[robot]>=4.2.2']},

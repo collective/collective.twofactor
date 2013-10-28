@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="collective.twofactor"
+    purge="False">
+    <configlet title="Twilio Settings"
+        action_id="twilio"
+        appId="collective.twofactor"
+        category="Products"
+        condition_expr=""
+        url_expr="string:${portal_url}/@@twilio-settings"
+        icon_expr="string:++resource++collective.twofactor/twilio_icon.png"
+        visible="True"
+        i18n:attributes="title">
+        <permission>Manage portal</permission>
+    </configlet>
+</object>

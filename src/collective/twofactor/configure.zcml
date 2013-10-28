@@ -1,5 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
@@ -8,6 +9,8 @@
   <five:registerPackage package="." initialize=".initialize" />
 
   <includeDependencies package="." />
+
+  <include package="Products.CMFCore" file="permissions.zcml" />
 
   <include package=".browser" />
   <include package=".methods" />
@@ -30,6 +33,18 @@
      handler=".events.check_valid_session"
      />
   
+  <browser:page
+      name="twilio-settings"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.TwilioSettingsControlPanel"
+      permission="cmf.ManagePortal"
+      />
+
+  <browser:resourceDirectory
+        name="collective.twofactor"
+        directory="static"
+    />
+
   <genericsetup:registerProfile
       name="default"
       title="collective.twofactor"

@@ -23,7 +23,7 @@ class IEnhancedUserDataSchema(IUserDataSchema):
     cell_phone = schema.TextLine(
         title=_(u'label_cell_phone', default=u'Cell phone number'),
         description=_(u'help_cell_phone',
-                      default=u"Enter your phone number if you choose to receive a code by SMS."),
+                      default=u"Enter your phone number if you choose to receive a code by SMS. Please use international format. Example: +15555555555"),
         required=False,
         )
 
