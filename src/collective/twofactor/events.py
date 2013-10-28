@@ -13,6 +13,7 @@ def check_valid_session(event):
     
     # Ignore common resources and the "two-factor-challenge" view.
     to_ignore = ['two-factor-challenge',
+                 '@@personal-information',  #  XXX: Exclude the personal preferences until we can provide cell phone validation before saving.
                  '.css',
                  '.js',
                  '.png',

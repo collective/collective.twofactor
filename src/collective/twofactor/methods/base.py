@@ -6,6 +6,7 @@ from random import random
 from collective.twofactor.config import SESSION_VALID
 from collective.twofactor.config import LOCAL_CODE_VALID
 from interfaces import IAuthenticationMethod
+from interfaces import ILocalAuthenticationMethod
 from zope.interface import implements
 
 
@@ -58,6 +59,7 @@ class LocalAuthentication(BaseAuthentication):
     """ Intended to be subclassed for authentication methods which generate
     a local code and send it to the user somehow
     """
+    implements(ILocalAuthenticationMethod)
 
     valid_already_sent = u""
     new_code_sent = u""

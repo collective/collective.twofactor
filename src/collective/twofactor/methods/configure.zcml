@@ -5,14 +5,14 @@
 
     <adapter
         factory=".sms.SMSAuthentication"
-        provides=".interfaces.IAuthenticationMethod"
+        provides=".interfaces.ILocalAuthenticationMethod"
         for="Products.CMFCore.interfaces.IMemberData"
         name="sms"
         />
 
     <adapter
         factory=".email.EmailAuthentication"
-        provides=".interfaces.IAuthenticationMethod"
+        provides=".interfaces.ILocalAuthenticationMethod"
         for="Products.CMFCore.interfaces.IMemberData"
         name="email"
         />
