@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<object name="portal_memberdata" meta_type="Plone Memberdata Tool">
+ <!-- A hash to mantain a session without asking again for authorization, along
+      with its generation date. -->
+ <property name="two_factor_hash" type="string"></property>
+ <property name="two_factor_hash_date" type="string"></property>
+ <!-- When the method generates a code and sends it to the user (ie. mail, 
+      sms, etc), store it here, along with its generated date. -->
+ <property name="local_code" type="string"></property>
+ <property name="local_code_date" type="string"></property>
+ <property name="local_code_sent" type="boolean"></property>
+ <!-- The method each user chooses for the two-factor authentication -->
+ <property name="two_factor_method" type="string"></property>
+ <property name="cell_phone" type="string"></property>
+</object>

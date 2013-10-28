@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="collective.twofactor">
+<body>
+
+<metal:main fill-slot="content">
+    <metal:content-core define-macro="content">
+        <h1 i18n:translate="">Two-factor Authentication</h1>
+
+        <p tal:content="view/auth_status" />
+        <p>
+          <span i18n:translate="">
+          Click <a href="" tal:attributes="href string:${request/URL}?reset_code=1"
+                  i18n:name="here">here</a> to reset your authentication code.</span>
+        </p>
+
+        <form action="." tal:attributes="action request/URL" method="post"
+          enctype="multipart/form-data">
+
+          <p tal:content="options/status" />
+          <input type="hidden" tal:attributes="value request/came_from|nothing" name="came_from"/>
+          <label for="two-factor-token" i18n:translate="">Enter your code here</label>
+          <input type="text" name="two-factor-token" value="" />
+          <input type="submit" value="Submit" name="submit"
+                i18n:attributes="value" />
+
+        </form>
+    </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

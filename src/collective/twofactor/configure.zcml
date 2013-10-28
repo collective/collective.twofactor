@@ -9,6 +9,27 @@
 
   <includeDependencies package="." />
 
+  <include package=".browser" />
+  <include package=".methods" />
+
+  <!--<i18n:registerTranslations directory="locales" />-->
+
+  <adapter
+      provides=".userdataschema.IEnhancedUserDataSchema"
+      for="Products.CMFCore.interfaces.ISiteRoot"
+      factory=".adapter.EnhancedUserDataPanelAdapter"
+      />
+
+  <utility
+     name="collective.twofactor.methods"
+     component=".vocabularies.TwoFactorMethodsVocabularyFactory"
+     />
+
+  <subscriber
+     for="ZPublisher.interfaces.IPubSuccess"
+     handler=".events.check_valid_session"
+     />
+  
   <genericsetup:registerProfile
       name="default"
       title="collective.twofactor"

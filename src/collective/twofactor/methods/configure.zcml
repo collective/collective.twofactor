@@ -1,0 +1,20 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.twofactor">
+
+    <adapter
+        factory=".sms.SMSAuthentication"
+        provides=".interfaces.IAuthenticationMethod"
+        for="Products.CMFCore.interfaces.IMemberData"
+        name="sms"
+        />
+
+    <adapter
+        factory=".email.EmailAuthentication"
+        provides=".interfaces.IAuthenticationMethod"
+        for="Products.CMFCore.interfaces.IMemberData"
+        name="email"
+        />
+
+</configure>

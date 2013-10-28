@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      i18n:domain="collective.twofactor"
+      tal:omit-tag="">
+<body tal:omit-tag="">
+
+  <p tal:content="options/status/message|nothing" />
+  <p>
+    <span i18n:translate="">
+    Click <a href="string:${request/URL}?reset_code=1"
+             i18n:name="here">here</a> to reset your code.</span>
+  </p>
+
+</body>
+</html>
+

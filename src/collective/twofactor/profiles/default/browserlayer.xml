@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<layers>
+ <layer name="collective.twofactor"
+    interface="collective.twofactor.interfaces.ITwoFactorLayer" />
+</layers>

@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.twofactor">
+
+    <browser:page
+        name="two-factor-challenge"
+        for="*"
+        class=".twofactor.TwoFactorChallengeView"
+        template="twofactor.pt"
+        permission="zope.Public"
+        layer="collective.twofactor.interfaces.ITwoFactorLayer"
+        />
+
+</configure>

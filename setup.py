@@ -40,6 +40,7 @@ setup(name='collective.twofactor',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'plone.api',
           # -*- Extra requirements: -*-
       ],
       extras_require={'test': ['plone.app.testing[robot]>=4.2.2']},
