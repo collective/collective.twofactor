@@ -1,0 +1,134 @@
+# Franco Pellegrini <frapell@ravvit.net>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2013-10-28 19:06+0000\n"
+"PO-Revision-Date: 2013-10-28 16:06-0300\n"
+"Last-Translator: Franco Pellegrini <frapell@ravvit.net>\n"
+"Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+"Language: es\n"
+"X-Generator: Lokalize 1.5\n"
+
+#: collective/twofactor/methods/email.py:12
+msgid "A code has already been sent to your email address."
+msgstr "Un código ya ha sido enviado a su dirección de correo electrónico."
+
+#: collective/twofactor/methods/sms.py:16
+msgid "A code has already been sent to your phone."
+msgstr "Un código ya ha sido enviado a su teléfono."
+
+#: collective/twofactor/methods/email.py:13
+msgid "A new code has been generated and sent to your email address."
+msgstr ""
+"Un nuevo código ha sido generado y enviado a su dirección de correo "
+"electrónico."
+
+#: collective/twofactor/methods/sms.py:17
+msgid "A new code has been generated and sent to your phone."
+msgstr "Un nuevo código ha sido generado y enviado a su teléfono."
+
+#: collective/twofactor/controlpanel.py:14
+msgid "Account SID"
+msgstr "Account SID"
+
+#: collective/twofactor/controlpanel.py:20
+msgid "Auth Token"
+msgstr "Auth Token"
+
+#: collective/twofactor/methods/email.py:18
+msgid "Authentication code for %s"
+msgstr "Código de autenticación para %s"
+
+#: collective/twofactor/methods/email.py:10
+msgid "Authentication over Email"
+msgstr "Autenticación por Email"
+
+#: collective/twofactor/methods/sms.py:14
+msgid "Authentication over SMS"
+msgstr "Autenticación por SMS"
+
+#: collective/twofactor/browser/twofactor.pt:19
+msgid "Click ${reset_link} to reset your authentication code."
+msgstr "Click ${reset_link} para reiniciar su código de autenticación."
+
+#: collective/twofactor/browser/twofactor.pt:31
+msgid "Enter your code here"
+msgstr "Ingrese su código aquí"
+
+#: collective/twofactor/controlpanel.py:26
+msgid "Phone Number"
+msgstr "Número telefónico"
+
+#: collective/twofactor/controlpanel.py:35
+msgid "Settings for the Twilio SMS service"
+msgstr "Configuraciones para el servicio de SMS Twilio"
+
+#: collective/twofactor/browser/twofactor.pt:33
+msgid "Submit"
+msgstr "Enviar"
+
+#: collective/twofactor/browser/twofactor.py:39
+msgid "The code you entered is invalid, please try again."
+msgstr "El código ingresado es inválido, por favor inténtelo nuevamente."
+
+#: collective/twofactor/controlpanel.py:34
+#: collective/twofactor/profiles/default/controlpanel.xml
+msgid "Twilio Settings"
+msgstr "Configuraciones de Twilio"
+
+#: collective/twofactor/browser/twofactor.pt:12
+msgid "Two-factor Authentication"
+msgstr "Autenticación de dos pasos"
+
+#: collective/twofactor/methods/email.py:19
+#: collective/twofactor/methods/sms.py:26
+msgid "Use this code to authenticate: %s"
+msgstr "Utilice este código para autenticar: %s"
+
+#: collective/twofactor/controlpanel.py:15
+msgid "Your Twilio Account SID."
+msgstr "Su \"Account SID\" de Twilio."
+
+#: collective/twofactor/controlpanel.py:21
+msgid "Your Twilio Auth Token."
+msgstr "Su \"Auth Token\" de Twilio."
+
+#: collective/twofactor/controlpanel.py:27
+msgid "Your Twilio phone number from where to send SMS."
+msgstr "Su número de teléfono de Twilio desde donde se envían los SMS."
+
+#. Default: "Enter your phone number if you choose to receive a code by SMS. Please use international format. Example: +15555555555"
+#: collective/twofactor/userdataschema.py:25
+msgid "help_cell_phone"
+msgstr ""
+"Ingrese su número de teléfono si elige recibir un código por SMS. Por favor "
+"utilice el formato internacional. Por ejemplo: +15555555555"
+
+#. Default: "Choose the method you would like to use for Two-factor authentication"
+#: collective/twofactor/userdataschema.py:17
+msgid "help_two_factor_method"
+msgstr "Seleccione el método que desea para la autenticación de dos pasos"
+
+#: collective/twofactor/browser/twofactor.pt:20
+msgid "here"
+msgstr "aquí"
+
+#. Default: "Cell phone number"
+#: collective/twofactor/userdataschema.py:24
+msgid "label_cell_phone"
+msgstr "Número de teléfono móvil"
+
+#. Default: "Two-factor authentication method"
+#: collective/twofactor/userdataschema.py:16
+msgid "two_factor_method"
+msgstr "Método de autenticación de dos pasos"
+
+

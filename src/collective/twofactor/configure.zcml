@@ -15,7 +15,7 @@
   <include package=".browser" />
   <include package=".methods" />
 
-  <!--<i18n:registerTranslations directory="locales" />-->
+  <i18n:registerTranslations directory="locales" />
 
   <adapter
       provides=".userdataschema.IEnhancedUserDataSchema"

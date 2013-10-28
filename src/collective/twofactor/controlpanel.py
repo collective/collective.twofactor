@@ -32,7 +32,7 @@ class ITwilioSettings(Interface):
 class TwilioSettingsEditForm(controlpanel.RegistryEditForm):
     schema = ITwilioSettings
     label = _(u'Twilio Settings')
-    description = _(u'Settings for configuring the Twilio SMS service')
+    description = _(u'Settings for the Twilio SMS service')
 
 
 class TwilioSettingsControlPanel(controlpanel.ControlPanelFormWrapper):
