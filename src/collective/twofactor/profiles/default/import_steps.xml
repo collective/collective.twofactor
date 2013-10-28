@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<import-steps>
+  <!--
+  <import-step id="twofactorpas_various" version="1"
+               handler="collective.twofactor.setuphandlers.importVarious"
+               title="TwoFactorPAS Plugin">
+  </import-step>
+  -->
+</import-steps>
