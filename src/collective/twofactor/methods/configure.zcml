@@ -1,6 +1,7 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="collective.twofactor">
 
     <adapter
@@ -17,18 +18,22 @@
         name="email"
         />
 
-    <adapter
-        factory=".sms.SMSAuthentication"
-        provides=".interfaces.ILocalAuthenticationMethod"
-        for="Products.remember.interfaces.IReMember"
-        name="sms"
-        />
+    <configure zcml:condition="installed Products.remember">
 
-    <adapter
-        factory=".email.EmailAuthentication"
-        provides=".interfaces.ILocalAuthenticationMethod"
-        for="Products.remember.interfaces.IReMember"
-        name="email"
-        />
+      <adapter
+          factory=".sms.SMSAuthentication"
+          provides=".interfaces.ILocalAuthenticationMethod"
+          for="Products.remember.interfaces.IReMember"
+          name="sms"
+          />
+
+      <adapter
+          factory=".email.EmailAuthentication"
+          provides=".interfaces.ILocalAuthenticationMethod"
+          for="Products.remember.interfaces.IReMember"
+          name="email"
+          />
+
+    </configure>
 
 </configure>
