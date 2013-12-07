@@ -2,4 +2,32 @@
 <registry>
   <records interface="collective.twofactor.controlpanel.ITwilioSettings" />
 
+  <record field="account_sid"
+          interface="collective.twofactor.controlpanel.ITwilioSettings"
+          name="collective.twofactor.controlpanel.ITwilioSettings.account_sid">
+    <field type="plone.registry.field.TextLine">
+      <description>Your Twilio Account SID.</description>
+      <title>Account SID</title>
+    </field>
+    <value></value>
+  </record>
+  <record field="auth_token"
+          interface="collective.twofactor.controlpanel.ITwilioSettings"
+          name="collective.twofactor.controlpanel.ITwilioSettings.auth_token">
+    <field type="plone.registry.field.TextLine">
+      <description>Your Twilio Auth Token.</description>
+      <title>Auth Token</title>
+    </field>
+    <value></value>
+  </record>
+  <record field="phone_number"
+          interface="collective.twofactor.controlpanel.ITwilioSettings"
+          name="collective.twofactor.controlpanel.ITwilioSettings.phone_number">
+    <field type="plone.registry.field.TextLine">
+      <description>Your Twilio phone number from where to send SMS.</description>
+      <title>Phone Number</title>
+    </field>
+    <value></value>
+  </record>
+
 </registry>
