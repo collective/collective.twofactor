@@ -40,6 +40,7 @@ setup(name='collective.twofactor',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'plone.app.registry',
           'plone.api',
           'twilio',  # XXX: Move this to an extra
           # -*- Extra requirements: -*-
