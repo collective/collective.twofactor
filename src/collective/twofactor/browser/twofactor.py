@@ -31,6 +31,8 @@ class TwoFactorChallengeView(BrowserView):
                 if code and self.auth.valid_code(code):
                     self.auth.generate_session_hash()
                     if came_from:
+                        if came_from.endswith('/login_form'):
+                            came_from = came_from.replace('/login_form', '/logged_in')
                         self.request.response.redirect(came_from)
                     else:
                         self.request.response.redirect(self.context.absolute_url())
