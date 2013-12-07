@@ -17,4 +17,18 @@
         name="email"
         />
 
+    <adapter
+        factory=".sms.SMSAuthentication"
+        provides=".interfaces.ILocalAuthenticationMethod"
+        for="Products.remember.interfaces.IReMember"
+        name="sms"
+        />
+
+    <adapter
+        factory=".email.EmailAuthentication"
+        provides=".interfaces.ILocalAuthenticationMethod"
+        for="Products.remember.interfaces.IReMember"
+        name="email"
+        />
+
 </configure>

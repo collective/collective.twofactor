@@ -11,12 +11,15 @@
   <includeDependencies package="." />
 
   <include package="Products.CMFCore" file="permissions.zcml" />
-
+  <include package="archetypes.schemaextender" />
+    
   <include package=".browser" />
   <include package=".methods" />
 
   <i18n:registerTranslations directory="locales" />
 
+  <adapter factory=".adapter.MemberExtender" />
+  
   <adapter
       provides=".userdataschema.IEnhancedUserDataSchema"
       for="Products.CMFCore.interfaces.ISiteRoot"
