@@ -17,6 +17,9 @@ def check_valid_session(event):
                  '.css',
                  '.js',
                  '.png',
+                 '.jpg',
+                 '.gif',
+                 '.ico',
                  ]
     
     for i in to_ignore:
