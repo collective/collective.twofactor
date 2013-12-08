@@ -1,0 +1,17 @@
+# convenience Makefile to run validation tests
+# src: source path discovered in run time
+# minimum_test_coverage: minimun test coverage allowed
+# pep8_ignore: ignore listed PEP 8 errors and warnings
+
+SHELL = /bin/sh
+
+src = src/collective/twofactor
+minimum_test_coverage = ${buildout:package-minimum-test-coverage}
+
+all: python-validation coverage-validation
+
+python-validation:
+	bin/flake8 $(src)
+
+coverage-validation:
+	bin/coverage.sh $(minimum_test_coverage)

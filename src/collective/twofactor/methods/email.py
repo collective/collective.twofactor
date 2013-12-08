@@ -11,11 +11,13 @@ class EmailAuthentication(LocalAuthentication):
 
     name = _("Authentication over Email")
 
-    valid_already_sent = _(u"A code has already been sent to your email address.")
-    new_code_sent = _(u"A new code has been generated and sent to your email address.")
+    valid_already_sent = _(u"A code has already been sent to your email "
+                           "address.")
+    new_code_sent = _(u"A new code has been generated and sent to your email "
+                      "address.")
     error_sending = _(u"An error has occured while trying to send you an "
-                       "Email. Please contact the site administrator for "
-                       "assistance. Sorry for the inconvenience.")
+                      "Email. Please contact the site administrator for "
+                      "assistance. Sorry for the inconvenience.")
 
     def send_code(self):
         self.failure = False
@@ -34,6 +36,6 @@ class EmailAuthentication(LocalAuthentication):
             site = getSite()
             site.error_log.raising(sys.exc_info())
             self.failure = True
-            
+
         if not self.failure:
             super(EmailAuthentication, self).send_code()

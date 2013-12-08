@@ -2,7 +2,6 @@
 
 from collective.twofactor import _
 from collective.twofactor.methods.interfaces import IAuthenticationMethod
-from plone.memoize.instance import memoize
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from zope.component import queryAdapter
@@ -40,13 +39,17 @@ class TwoFactorChallengeView(BrowserView):
                     self.auth.generate_session_hash()
                     if came_from:
                         if came_from.endswith('/login_form'):
-                            came_from = came_from.replace('/login_form', '/logged_in')
+                            came_from = came_from.replace('/login_form',
+                                                          '/logged_in')
                         self.request.response.redirect(came_from)
                     else:
-                        self.request.response.redirect(self.context.absolute_url())
+                        self.request.response.redirect(
+                            self.context.absolute_url()
+                        )
                 else:
                     self.request.set('came_from', came_from)
-                    status = _(u"The code you entered is invalid, please try again.")
+                    status = _(u"The code you entered is invalid, please try "
+                               "again.")
 
             elif 'reset_code' in self.request:
                 self.auth.reset_code()

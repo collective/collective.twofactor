@@ -19,11 +19,11 @@ class TwoFactorMethodsVocabulary(object):
         else:
             mt = getToolByName(context, 'portal_membership')
             mem = mt.getAuthenticatedMember()
-        
+
         methods = []
         for method in getAdapters((mem,), IAuthenticationMethod):
             methods.append(SimpleTerm(value=method[0], title=method[1].name))
-            
+
         return SimpleVocabulary(methods)
 
 TwoFactorMethodsVocabularyFactory = TwoFactorMethodsVocabulary()

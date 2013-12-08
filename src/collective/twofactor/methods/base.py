@@ -12,14 +12,14 @@ from zope.interface import implements
 
 class BaseAuthentication(object):
     implements(IAuthenticationMethod)
-    
+
     name = ""
     failure = False
-    
+
     def __init__(self, member):
         self.member = member
         self.status = {}
-        
+
     def generate_session_hash(self):
         current_time = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
         member_id = self.member.id
@@ -31,10 +31,12 @@ class BaseAuthentication(object):
         valid = False
 
         session_hash = self.member.getProperty('two_factor_hash', None)
-        session_hash_date = self.member.getProperty('two_factor_hash_date', None)
+        session_hash_date = self.member.getProperty('two_factor_hash_date',
+                                                    None)
 
         if session_hash and session_hash_date:
-            hash_date = datetime.strptime(session_hash_date, "%Y-%m-%dT%H:%M:%S")
+            hash_date = datetime.strptime(session_hash_date,
+                                          "%Y-%m-%dT%H:%M:%S")
             member_id = self.member.id
             h = sha256("%s%s" % (member_id, session_hash_date)).hexdigest()
 
@@ -96,7 +98,7 @@ class LocalAuthentication(BaseAuthentication):
                 valid = True
 
         return valid
-      
+
     def get_code(self):
         return self.member.getProperty('local_code', None)
 
@@ -110,11 +112,11 @@ class LocalAuthentication(BaseAuthentication):
         self.send_code()
         if self.failure:
             self.member.setProperties({'two_factor_hash': '',
-                                        'two_factor_hash_date': '',
-                                        'local_code': '',
-                                        'local_code_date': '',
-                                        'local_code_sent': False,
-                                      })
+                                       'two_factor_hash_date': '',
+                                       'local_code': '',
+                                       'local_code_date': '',
+                                       'local_code_sent': False,
+                                       })
             self.status['message'] = self.error_sending
             self.status['status'] = u'error'
         else:
@@ -127,7 +129,7 @@ class LocalAuthentication(BaseAuthentication):
         local_code = self.member.getProperty('local_code', None)
         local_code_date = self.member.getProperty('local_code_date', None)
         local_code_sent = self.member.getProperty('local_code_sent', False)
-        
+
         if local_code:
             code_date = datetime.strptime(local_code_date, "%Y-%m-%dT%H:%M:%S")
 
@@ -140,7 +142,7 @@ class LocalAuthentication(BaseAuthentication):
         if valid and local_code_sent:
             self.status['message'] = self.valid_already_sent
             self.status['status'] = u'success'
-            
+
         elif not valid:
             self.generate_random_code()
             self.send_code()
@@ -150,7 +152,7 @@ class LocalAuthentication(BaseAuthentication):
                                            'local_code': '',
                                            'local_code_date': '',
                                            'local_code_sent': False,
-                                          })
+                                           })
                 self.status['message'] = self.error_sending
                 self.status['status'] = u'error'
             else:

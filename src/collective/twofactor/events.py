@@ -10,10 +10,12 @@ def check_valid_session(event):
 
     # Should we check a valid session hash in this request ?
     should_check = True
-    
+
     # Ignore common resources and the "two-factor-challenge" view.
     to_ignore = ['two-factor-challenge',
-                 '@@personal-information',  #  XXX: Exclude the personal preferences until we can provide cell phone validation before saving.
+                 # XXX: Exclude the personal preferences until we can
+                 # provide cell phone validation before saving.
+                 '@@personal-information',
                  '.css',
                  '.js',
                  '.png',
@@ -21,7 +23,7 @@ def check_valid_session(event):
                  '.gif',
                  '.ico',
                  ]
-    
+
     for i in to_ignore:
         if event.request.get('PATH_INFO').endswith(i):
             should_check = False
@@ -40,7 +42,7 @@ def check_valid_session(event):
             auth = getAdapter(member, IAuthenticationMethod, name=method)
             if not auth.is_valid_session():
                 portal_url = portal.absolute_url()
-                url = "%s/two-factor-challenge?came_from=%s" % (portal_url,
-                                                                event.request.get('URL'))
+                url = ("%s/two-factor-challenge?came_from=%s" %
+                       (portal_url, event.request.get('URL')))
 
                 event.request.response.redirect(url)

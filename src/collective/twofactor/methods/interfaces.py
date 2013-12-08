@@ -26,7 +26,7 @@ class IAuthenticationMethod(Interface):
         This method is intended to be overriden by your local method
         implementation
         """
-  
+
 
 class ILocalAuthenticationMethod(IAuthenticationMethod):
     """ Methods that save a local code and send it to the user should provide
@@ -36,7 +36,7 @@ class ILocalAuthenticationMethod(IAuthenticationMethod):
     def generate_random_code(length):
         """ Generate a random code of 'length' length
         """
-      
+
     def get_code():
         """ Gets the local code
         """

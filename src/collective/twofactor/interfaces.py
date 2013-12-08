@@ -24,8 +24,8 @@ class ITwilioSettings(Interface):
     phone_number = schema.TextLine(
         title=_(u"Phone Number"),
         description=_(u"Your Twilio phone number from where to send SMS. "
-                       "International format, with no special characters. "
-                       "Example: +15555555555"),
+                      "International format, with no special characters. "
+                      "Example: +15555555555"),
         required=True,
     )
 

@@ -6,7 +6,7 @@ from collective.twofactor.testing import \
     COLLECTIVE_TWOFACTOR_INTEGRATION_TESTING
 
 
-class TestExample(unittest.TestCase):
+class TestSetup(unittest.TestCase):
 
     layer = COLLECTIVE_TWOFACTOR_INTEGRATION_TESTING
 
