@@ -14,6 +14,7 @@ class BaseAuthentication(object):
     implements(IAuthenticationMethod)
     
     name = ""
+    failure = False
     
     def __init__(self, member):
         self.member = member
@@ -63,6 +64,7 @@ class LocalAuthentication(BaseAuthentication):
 
     valid_already_sent = u""
     new_code_sent = u""
+    error_sending = u""
 
     def generate_random_code(self, length=8):
         random_code = 0
@@ -71,8 +73,8 @@ class LocalAuthentication(BaseAuthentication):
             random_code = str(int(random()*(10**length)))
 
         current_time = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
-        self.member.setProperties({'two_factor_hash': None,
-                                   'two_factor_hash_date': None,
+        self.member.setProperties({'two_factor_hash': '',
+                                   'two_factor_hash_date': '',
                                    'local_code': random_code,
                                    'local_code_date': current_time,
                                    'local_code_sent': False,
@@ -106,7 +108,18 @@ class LocalAuthentication(BaseAuthentication):
     def reset_code(self):
         self.generate_random_code()
         self.send_code()
-        self.status['message'] = self.new_code_sent
+        if self.failure:
+            self.member.setProperties({'two_factor_hash': '',
+                                        'two_factor_hash_date': '',
+                                        'local_code': '',
+                                        'local_code_date': '',
+                                        'local_code_sent': False,
+                                      })
+            self.status['message'] = self.error_sending
+            self.status['status'] = u'error'
+        else:
+            self.status['message'] = self.new_code_sent
+            self.status['status'] = u'success'
 
     def execute(self):
         valid = False
@@ -126,8 +139,20 @@ class LocalAuthentication(BaseAuthentication):
 
         if valid and local_code_sent:
             self.status['message'] = self.valid_already_sent
+            self.status['status'] = u'success'
             
         elif not valid:
             self.generate_random_code()
             self.send_code()
-            self.status['message'] = self.new_code_sent
+            if self.failure:
+                self.member.setProperties({'two_factor_hash': '',
+                                           'two_factor_hash_date': '',
+                                           'local_code': '',
+                                           'local_code_date': '',
+                                           'local_code_sent': False,
+                                          })
+                self.status['message'] = self.error_sending
+                self.status['status'] = u'error'
+            else:
+                self.status['message'] = self.new_code_sent
+                self.status['status'] = u'success'

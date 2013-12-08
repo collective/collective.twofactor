@@ -13,28 +13,30 @@
         <div class="auth-status">
           <p tal:content="view/auth_status" />
         </div>
-        <div class="reset-auth-token">
-          <p>
-            <span i18n:translate="">
-            Click <span i18n:name="reset_link">
-              <a href=""
-                tal:attributes="href string:${request/URL}?reset_code=1"
-                i18n:translate="">here</a></span> to reset your authentication code.</span>
-          </p>
-        </div>
-        <div class="ask-token">
-          <form action="." tal:attributes="action request/URL" method="post"
-            enctype="multipart/form-data">
+        <tal:could_send_code condition="view/could_send_code">
+          <div class="reset-auth-token">
+            <p>
+              <span i18n:translate="">
+              Click <span i18n:name="reset_link">
+                <a href=""
+                  tal:attributes="href string:${request/URL}?reset_code=1"
+                  i18n:translate="">here</a></span> to reset your authentication code.</span>
+            </p>
+          </div>
+          <div class="ask-token">
+            <form action="." tal:attributes="action request/URL" method="post"
+              enctype="multipart/form-data">
 
-            <p class="validation-status" tal:content="options/status" />
-            <input type="hidden" tal:attributes="value request/came_from|nothing" name="came_from"/>
-            <label for="two-factor-token" i18n:translate="">Enter your code here</label>
-            <input type="text" name="two-factor-token" value="" />
-            <input type="submit" value="Submit" name="submit"
-                  i18n:attributes="value" />
+              <p class="validation-status" tal:content="options/status" />
+              <input type="hidden" tal:attributes="value request/came_from|nothing" name="came_from"/>
+              <label for="two-factor-token" i18n:translate="">Enter your code here</label>
+              <input type="text" name="two-factor-token" value="" />
+              <input type="submit" value="Submit" name="submit"
+                    i18n:attributes="value" />
 
-          </form>
-        </div>
+            </form>
+          </div>
+        </tal:could_send_code>
     </metal:content-core>
 </metal:main>
 

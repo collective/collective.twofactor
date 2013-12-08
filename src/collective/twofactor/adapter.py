@@ -25,10 +25,12 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
     def set_two_factor_method(self, value):
         # Not only save the method, but also remove the session hash and any
         # old local code
-        return self.context.setMemberProperties({'two_factor_hash': None,
-                                                 'two_factor_hash_date': None,
-                                                 'local_code': None,
-                                                 'local_code_date': None,
+        if not value:
+            value = ''
+        return self.context.setMemberProperties({'two_factor_hash': '',
+                                                 'two_factor_hash_date': '',
+                                                 'local_code': '',
+                                                 'local_code_date': '',
                                                  'local_code_sent': False,
                                                  'two_factor_method': value})
     two_factor_method = property(get_two_factor_method, set_two_factor_method)

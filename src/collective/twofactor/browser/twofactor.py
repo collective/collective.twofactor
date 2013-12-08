@@ -15,6 +15,14 @@ class TwoFactorChallengeView(BrowserView):
     def auth_status(self):
         return self.auth.status.get('message', u"")
 
+    def could_send_code(self):
+        could_send = True
+        status = self.auth.status.get('status', u'success')
+        if status == u'error':
+            could_send = False
+
+        return could_send
+
     def __call__(self):
         mt = getToolByName(self.context, 'portal_membership')
 
