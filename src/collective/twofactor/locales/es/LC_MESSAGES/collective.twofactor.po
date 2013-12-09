@@ -1,85 +1,145 @@
-# Franco Pellegrini <frapell@ravvit.net>, 2013.
+# Franco Pellegrini <frapell@gmail.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2013-10-28 19:06+0000\n"
-"PO-Revision-Date: 2013-10-28 16:06-0300\n"
-"Last-Translator: Franco Pellegrini <frapell@ravvit.net>\n"
-"Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
+"POT-Creation-Date: 2013-12-09 02:39+0000\n"
+"PO-Revision-Date: 2013-12-09 03:43+0100\n"
+"Last-Translator: Franco Pellegrini <frapell@gmail.com>\n"
+"Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Language-Code: es\n"
+"Language-Name: Spanish\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 "Language: es\n"
 "X-Generator: Lokalize 1.5\n"
 
-#: collective/twofactor/methods/email.py:12
+#: collective/twofactor/methods/email.py:14
 msgid "A code has already been sent to your email address."
 msgstr "Un código ya ha sido enviado a su dirección de correo electrónico."
 
-#: collective/twofactor/methods/sms.py:16
+#: collective/twofactor/methods/sms.py:17
 msgid "A code has already been sent to your phone."
 msgstr "Un código ya ha sido enviado a su teléfono."
 
-#: collective/twofactor/methods/email.py:13
+#: collective/twofactor/methods/email.py:16
 msgid "A new code has been generated and sent to your email address."
 msgstr ""
 "Un nuevo código ha sido generado y enviado a su dirección de correo "
 "electrónico."
 
-#: collective/twofactor/methods/sms.py:17
+#: collective/twofactor/methods/sms.py:18
 msgid "A new code has been generated and sent to your phone."
 msgstr "Un nuevo código ha sido generado y enviado a su teléfono."
 
-#: collective/twofactor/controlpanel.py:14
+#: collective/twofactor/interfaces.py:13
 msgid "Account SID"
 msgstr "Account SID"
 
-#: collective/twofactor/controlpanel.py:20
+#: collective/twofactor/methods/sms.py:19
+msgid ""
+"An error has occured while trying to send an SMS to your phone. Please "
+"contact the site administrator for assistance. Sorry for the inconvenience."
+msgstr ""
+"Un error ha ocurrido mientras se le intentaba enviar un SMS a su teléfono. "
+"Por favor contacte al administrador del sitio para asistencia. Disculpe los "
+"inconvenientes."
+
+#: collective/twofactor/methods/email.py:18
+msgid ""
+"An error has occured while trying to send you an Email. Please contact the "
+"site administrator for assistance. Sorry for the inconvenience."
+msgstr ""
+"Un error ha ocurrido mientras se le intentaba enviar un Email. Por favor "
+"contacte al administrador del sitio para asistencia. Disculpe los "
+"inconvenientes."
+
+#: collective/twofactor/interfaces.py:19
 msgid "Auth Token"
 msgstr "Auth Token"
 
-#: collective/twofactor/methods/email.py:18
+#: collective/twofactor/methods/email.py:26
 msgid "Authentication code for %s"
 msgstr "Código de autenticación para %s"
 
-#: collective/twofactor/methods/email.py:10
+#: collective/twofactor/methods/email.py:12
 msgid "Authentication over Email"
 msgstr "Autenticación por Email"
 
-#: collective/twofactor/methods/sms.py:14
+#: collective/twofactor/methods/sms.py:15
 msgid "Authentication over SMS"
 msgstr "Autenticación por SMS"
 
-#: collective/twofactor/browser/twofactor.pt:19
+#: collective/twofactor/controlpanel.py:73
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: collective/twofactor/controlpanel.py:67
+msgid "Changes saved"
+msgstr "Cambios guardados"
+
+#: collective/twofactor/browser/twofactor.pt:20
 msgid "Click ${reset_link} to reset your authentication code."
 msgstr "Click ${reset_link} para reiniciar su código de autenticación."
 
-#: collective/twofactor/browser/twofactor.pt:31
+#: collective/twofactor/controlpanel.py:75
+msgid "Edit cancelled"
+msgstr "Edición cancelada"
+
+#: collective/twofactor/browser/twofactor.pt:33
 msgid "Enter your code here"
 msgstr "Ingrese su código aquí"
 
-#: collective/twofactor/controlpanel.py:26
+#: collective/twofactor/interfaces.py:25
 msgid "Phone Number"
 msgstr "Número telefónico"
 
-#: collective/twofactor/controlpanel.py:35
+#: collective/twofactor/controlpanel.py:56
+msgid "Save"
+msgstr "Guardar"
+
+#: collective/twofactor/controlpanel.py:15
 msgid "Settings for the Twilio SMS service"
 msgstr "Configuraciones para el servicio de SMS Twilio"
 
-#: collective/twofactor/browser/twofactor.pt:33
+#: collective/twofactor/browser/twofactor.pt:35
 msgid "Submit"
 msgstr "Enviar"
 
-#: collective/twofactor/browser/twofactor.py:39
+#: collective/twofactor/controlpanel.py:27
+msgid ""
+"The SID or token are invalid and we couldn't authenticate with Twilio, please "
+"try again."
+msgstr ""
+"El SID de la cuenta o el token son inválidos y no hemos podido autenticar con "
+"Twilio, por favor inténtelo nuevamente."
+
+#: collective/twofactor/browser/twofactor.py:51
 msgid "The code you entered is invalid, please try again."
 msgstr "El código ingresado es inválido, por favor inténtelo nuevamente."
 
-#: collective/twofactor/controlpanel.py:34
+#: collective/twofactor/controlpanel.py:47
+msgid ""
+"The phone number entered is a valid Twilio number for this account, however, "
+"this phone number cannot send SMS. Please make sure to buy a phone number "
+"which allows SMS to be sent."
+msgstr ""
+"El número telefónico ingresado es un número válido de Twilio, asimismo, este "
+"número no puede enviar SMS. Por favor asegúrese de comprar un número que "
+"permita el envío de SMS."
+
+#: collective/twofactor/controlpanel.py:40
+msgid ""
+"The phone number you entered doesn't seem valid for this Twilio account, "
+"please make sure you are entering correctly."
+msgstr ""
+"El numero telefónico ingresado no parece válido para esta cuenta Twilio, por "
+"favor asegúrese que lo está ingresando correctamente."
+
+#: collective/twofactor/controlpanel.py:14
 #: collective/twofactor/profiles/default/controlpanel.xml
 msgid "Twilio Settings"
 msgstr "Configuraciones de Twilio"
@@ -88,41 +148,45 @@ msgstr "Configuraciones de Twilio"
 msgid "Two-factor Authentication"
 msgstr "Autenticación de dos pasos"
 
-#: collective/twofactor/methods/email.py:19
-#: collective/twofactor/methods/sms.py:26
+#: collective/twofactor/methods/email.py:27
+#: collective/twofactor/methods/sms.py:31
 msgid "Use this code to authenticate: %s"
 msgstr "Utilice este código para autenticar: %s"
 
-#: collective/twofactor/controlpanel.py:15
+#: collective/twofactor/interfaces.py:14
 msgid "Your Twilio Account SID."
 msgstr "Su \"Account SID\" de Twilio."
 
-#: collective/twofactor/controlpanel.py:21
+#: collective/twofactor/interfaces.py:20
 msgid "Your Twilio Auth Token."
 msgstr "Su \"Auth Token\" de Twilio."
 
-#: collective/twofactor/controlpanel.py:27
-msgid "Your Twilio phone number from where to send SMS."
-msgstr "Su número de teléfono de Twilio desde donde se envían los SMS."
+#: collective/twofactor/interfaces.py:26
+msgid ""
+"Your Twilio phone number from where to send SMS. International format, with "
+"no special characters. Example: +15555555555"
+msgstr ""
+"Su número de teléfono de Twilio desde donde enviar SMS. Formato "
+"internacional, sin caracteres especiales. Ejemplo: +15555555555"
 
 #. Default: "Enter your phone number if you choose to receive a code by SMS. Please use international format. Example: +15555555555"
-#: collective/twofactor/userdataschema.py:25
+#: collective/twofactor/userdataschema.py:27
 msgid "help_cell_phone"
 msgstr ""
 "Ingrese su número de teléfono si elige recibir un código por SMS. Por favor "
 "utilice el formato internacional. Por ejemplo: +15555555555"
 
 #. Default: "Choose the method you would like to use for Two-factor authentication"
-#: collective/twofactor/userdataschema.py:17
+#: collective/twofactor/userdataschema.py:18
 msgid "help_two_factor_method"
 msgstr "Seleccione el método que desea para la autenticación de dos pasos"
 
-#: collective/twofactor/browser/twofactor.pt:20
+#: collective/twofactor/browser/twofactor.pt:21
 msgid "here"
 msgstr "aquí"
 
 #. Default: "Cell phone number"
-#: collective/twofactor/userdataschema.py:24
+#: collective/twofactor/userdataschema.py:26
 msgid "label_cell_phone"
 msgstr "Número de teléfono móvil"
 
