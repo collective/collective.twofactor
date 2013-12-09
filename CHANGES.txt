@@ -20,3 +20,5 @@ Changelog
 - Create a control panel for managing Twilio settings.
   [frapell]
   
+- Use schemaextender to support Products.remember
+  [frapell]
