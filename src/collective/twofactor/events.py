@@ -16,6 +16,7 @@ def check_valid_session(event):
                  # XXX: Exclude the personal preferences until we can
                  # provide cell phone validation before saving.
                  '@@personal-information',
+                 'logout',
                  '.css',
                  '.js',
                  '.png',

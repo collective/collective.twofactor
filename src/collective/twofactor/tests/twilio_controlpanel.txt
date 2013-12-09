@@ -1,0 +1,32 @@
+*** Settings ***
+
+Library  Selenium2Library  timeout=5 seconds  implicit_wait=0.5 seconds
+Resource  keywords.txt
+Variables  plone/app/testing/interfaces.py
+
+Suite Setup  Start browser
+Suite Teardown  Close All Browsers
+
+*** Variables ***
+
+${BROWSER} =  firefox
+
+*** Test Cases ***
+
+Control panel should not allow to save data if credentials do not validate
+    Log In As Site Owner
+    Goto Twilio Controlpanel
+    Validate Twilio Credentials  valid_sid  invalid_token  invalid_phone
+    Page should contain  The SID or token are invalid
+    Validate Twilio Credentials  valid_sid  valid_token  invalid_phone
+    Page should contain  The phone number you entered doesn't seem valid
+    Validate Twilio Credentials  valid_sid  valid_token  no_sms_phone
+    Page should contain  this phone number cannot send SMS.
+    Validate Twilio Credentials  valid_sid  valid_token  valid_phone
+    Page should contain  Changes saved
+
+Control panel edition can be cancelled
+    Log In As Site Owner
+    Goto Twilio Controlpanel
+    Click Button  Cancel
+    Page should contain  Edit cancelled

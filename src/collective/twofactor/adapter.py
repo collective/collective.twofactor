@@ -4,7 +4,7 @@ from archetypes.schemaextender.field import ExtensionField
 from archetypes.schemaextender.interfaces import ISchemaExtender
 from plone.app.users.browser.personalpreferences import UserDataPanelAdapter
 from Products.Archetypes import public as atapi
-try:
+try:  # pragma: no cover
     from Products.remember.interfaces import IReMember
     from Products.remember.content.member import Member
     REMEMBER = True
@@ -19,7 +19,6 @@ from zope.schema.interfaces import IVocabularyFactory
 class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
     """
     """
-
     def get_two_factor_method(self):
         return self.context.getProperty('two_factor_method', '')
 
@@ -46,7 +45,7 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
     cell_phone = property(get_cell_phone, set_cell_phone)
 
 
-if REMEMBER:
+if REMEMBER:  # pragma: no cover
     class MyStringField(ExtensionField, atapi.StringField):
         """A trivial field."""
 
@@ -78,7 +77,7 @@ if REMEMBER:
                     description_msgid='help_two_factor_method',
                     format='select',
                     i18n_domain='collective.twofactor',
-                    )
+                )
             ),
             MyStringField(
                 'cell_phone',

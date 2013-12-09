@@ -1,10 +1,10 @@
 #! /bin/sh
-# checks for report created with createzopecoverage and evaluate the result
+# checks for report created with createcoverage and evaluate the result
 
 DEFAULT=${buildout:package-minimum-test-coverage}
-REPORT="coverage/reports/all.html"
+REPORT="htmlcov/index.html"
 
-if [ $1 -ge 0 ] && [ $1 -le 100 ]; then
+if [ "$#" -eq 1 ] && [ $1 -ge 0 ] && [ $1 -le 100 ]; then
     MINIMUM=$1
 else
     echo "Invalid value for minimum coverage; using default: $DEFAULT%"
@@ -12,7 +12,7 @@ else
 fi
 
 if [ ! -f "$REPORT" ]; then
-    bin/createzopecoverage 1>/dev/null
+    bin/createcoverage run bin/test
 fi
 
 # find first percentage value in file (module test coverage) and return it

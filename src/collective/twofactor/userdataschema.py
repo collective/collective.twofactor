@@ -20,7 +20,7 @@ class IEnhancedUserDataSchema(IUserDataSchema):
                                "Two-factor authentication")),
         vocabulary="collective.twofactor.methods",
         required=False,
-        )
+    )
 
     cell_phone = schema.TextLine(
         title=_(u'label_cell_phone', default=u'Cell phone number'),
@@ -29,7 +29,7 @@ class IEnhancedUserDataSchema(IUserDataSchema):
                                "receive a code by SMS. Please use "
                                "international format. Example: +15555555555")),
         required=False,
-        )
+    )
 
 
 class UserDataSchemaProvider(object):

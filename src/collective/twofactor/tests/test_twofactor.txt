@@ -1,0 +1,108 @@
+*** Settings ***
+
+Library  Selenium2Library  timeout=5 seconds  implicit_wait=0.5 seconds
+Resource  keywords.txt
+Variables  plone/app/testing/interfaces.py
+
+Suite Setup  Start browser
+Suite Teardown  Close All Browsers
+
+*** Variables ***
+
+${BROWSER} =  firefox
+
+*** Test Cases ***
+
+A user with two factor enabled, should be redirected to the challenge view
+    Log In As Test User
+    Goto User Preferences
+    Enable Two Factor  Test Authentication Adapter
+    Goto Homepage
+    Location Should Contain  two-factor-challenge
+    Page Should Contain  Two-factor Authentication
+    Page Should Contain  New code has been sent
+    Goto Homepage
+    Location Should Contain  two-factor-challenge
+    Page Should Contain  Two-factor Authentication
+    Page Should Contain  Valid code already sent
+    Click Link  css=a#reset_two_factor_token
+    Location Should Contain  two-factor-challenge
+    Page Should Contain  Two-factor Authentication
+    Page Should Contain  New code has been sent
+
+When entering valid code, should be redirected to the location from where it was redirected
+    Log In As Site Owner
+    Create Page  Page 1  Description
+    Log In As Test User
+    Goto User Preferences
+    Enable Two Factor  Test Authentication Adapter
+    Go to  ${PLONE_URL}/page-1
+    Page Should Contain  Two-factor Authentication
+    Page Should Contain  New code has been sent
+    Input Text  name=two-factor-token  12345678
+    Click Button  Submit
+    Location Should Be  ${PLONE_URL}/page-1/document_view
+    
+When entering an invalid code, should have a message informing so, and still redirect ok when valid code is entered
+    Log In As Site Owner
+    Create Page  Page 1  Description
+    Log In As Test User
+    Goto User Preferences
+    Enable Two Factor  Test Authentication Adapter
+    Go to  ${PLONE_URL}/page-1
+    Page Should Contain  Two-factor Authentication
+    Page Should Contain  New code has been sent
+    Input Text  name=two-factor-token  1234567
+    Click Button  Submit
+    Page Should Contain  Two-factor Authentication
+    Page Should Contain  The code you entered is invalid, please try again
+    Input Text  name=two-factor-token  12345678
+    Click Button  Submit
+    Location Should Be  ${PLONE_URL}/page-1/document_view
+
+Changing the authentication mechanism should reset session hash
+    Log In As Test User
+    Goto User Preferences
+    Enable Two Factor  Test Authentication Adapter
+    Goto Homepage
+    Location Should Contain  two-factor-challenge
+    Page Should Contain  Two-factor Authentication
+    Page Should Contain  New code has been sent
+    Input Text  name=two-factor-token  12345678
+    Click Button  Submit
+    Location Should Be  ${PLONE_URL}/folder_listing
+    Goto User Preferences
+    Enable Two Factor  Authentication over Email
+    Enable Two Factor  Test Authentication Adapter
+    Goto Homepage
+    Location Should Contain  two-factor-challenge
+    Page Should Contain  Two-factor Authentication
+    Page Should Contain  New code has been sent
+    Input Text  name=two-factor-token  12345678
+    Click Button  Submit
+    Location Should Be  ${PLONE_URL}/folder_listing
+
+If something wrong happens when sending the code, site should not explode
+    Log In As Test User
+    Goto User Preferences
+    Enable Two Factor  Test Authentication Adapter
+    Go to  ${PLONE_URL}/two-factor-challenge?should_fail=True
+    Location Should Contain  two-factor-challenge
+    Page Should Contain  Two-factor Authentication
+    Page Should Contain  An error appeared
+    Page Should Not Contain Element  name=two-factor-token
+
+When came_from is login_form, should redirect to logged_in after valid code is entered
+    Log In As Test User
+    Goto User Preferences
+    Enable Two Factor  Test Authentication Adapter
+    Log out
+    Go to  ${PLONE_URL}/login_form
+    Page should contain element  __ac_name
+    Input text  __ac_name  ${TEST_USER_NAME}
+    Input text  __ac_password  ${TEST_USER_PASSWORD}
+    Click Button  Log in
+    Location Should Contain  two-factor-challenge
+    Input Text  name=two-factor-token  12345678
+    Click Button  Submit
+    Location Should Be  ${PLONE_URL}/logged_in

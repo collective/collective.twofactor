@@ -1,0 +1,117 @@
+*** Settings ***
+
+Library  Selenium2Library  timeout=5 seconds  implicit_wait=0.5 seconds
+
+*** Variables ***
+
+${PORT} =  55001
+${ZOPE_URL} =  http://localhost:${PORT}
+${PLONE_URL} =  ${ZOPE_URL}/plone
+${BROWSER} =  Firefox
+
+
+*** Keywords ***
+
+Start browser
+    Open browser  ${PLONE_URL}  browser=${BROWSER}
+
+Goto Homepage
+    Go to   ${PLONE_URL}
+    Page should contain  Plone site
+
+Goto Twilio Controlpanel
+    Go to   ${PLONE_URL}/@@twilio-settings
+    Page should contain  Twilio Settings
+
+Goto User Preferences
+    Go to   ${PLONE_URL}/@@personal-information
+    Page should contain  Personal Information
+
+Log out
+    Go to  ${PLONE_URL}/logout
+    Page should contain  logged out
+
+Log in
+    [Arguments]  ${userid}  ${password}
+
+    Go to  ${PLONE_URL}/login_form
+    Page should contain element  __ac_name
+    Input text  __ac_name  ${userid}
+    Input text  __ac_password  ${password}
+    Click Button  Log in
+    Goto Homepage
+
+Log In As Site Owner
+    Log out
+    Log in  ${SITE_OWNER_NAME}  ${SITE_OWNER_PASSWORD}
+
+Log In As Test User
+    Log out
+    Log in  ${TEST_USER_NAME}  ${TEST_USER_PASSWORD}
+
+Open Menu
+    [Arguments]  ${elementId}
+
+    Element Should Not Be Visible  css=dl#${elementId} dd.actionMenuContent
+    Click link  css=dl#${elementId} dt.actionMenuHeader a
+    Wait until keyword succeeds  1  5  Element Should Be Visible  css=dl#${elementId} dd.actionMenuContent
+
+Open Add New Menu
+    Open Menu  plone-contentmenu-factories
+
+Click Add Page
+    Open Add New Menu
+    Click Link  link=Page
+    Page Should Contain  Page
+
+Open Action Menu
+    Open Menu  plone-contentmenu-actions
+
+Click Delete Action
+    Open Action Menu
+    Click Link  link=Delete
+
+Click Rename Action
+    Open Action Menu
+    Click Link  link=Rename
+
+Remove Content
+    Click Delete Action
+    Wait Until Page Contains Element  css=input.destructive
+    Click Button  css=input.destructive
+    Page Should Contain  Plone site
+
+Rename Content
+    [arguments]  ${old_id}  ${new_id}  ${new_title}
+
+    Click Rename Action
+    Wait Until Page Contains Element  css=input#${old_id}_id
+    Input Text  css=input#${old_id}_id  ${new_id}
+    Input Text  css=input#${old_id}_title  ${new_title}
+    Click Button  Rename All
+
+Create Page
+    [arguments]  ${title}  ${summary}
+
+    Click Add Page
+    Input Text  css=input#title  ${title}
+    Input Text  css=textarea#description  ${summary}
+    Click Button  Save
+    Page Should Contain  Changes saved.
+
+Validate Twilio Credentials
+    [arguments]  ${sid}  ${token}  ${phone_number}
+
+    Page should contain  Twilio Settings
+    Input Text  css=input#form-widgets-account_sid  ${sid}
+    Input Text  css=input#form-widgets-auth_token  ${token}
+    Input Text  css=input#form-widgets-phone_number  ${phone_number}
+    Click Button  Save
+
+Enable Two Factor
+    [arguments]  ${method}
+
+    Page should contain  Personal Information
+    Input Text  name=form.email  test@none.com
+    Select From List  name=form.two_factor_method  ${method}
+    Click Button  Save

@@ -48,11 +48,11 @@ class BaseAuthentication(object):
 
         return valid
 
-    def valid_code(self, code):
+    def valid_code(self, code):  # noqa
         # Override this method for your specific method
         return False
 
-    def execute(self):
+    def execute(self):  # noqa
         # Intended to be overriden by a subclass to execute specific code
         # needed to be ran before requesting the auth code.
         pass
@@ -70,9 +70,9 @@ class LocalAuthentication(BaseAuthentication):
 
     def generate_random_code(self, length=8):
         random_code = 0
-        while random_code < 10**(length-1):
+        while len(str(random_code)) < len(str(10 ** (length - 1))):
             # Make sure the generated code has 'length' length.
-            random_code = str(int(random()*(10**length)))
+            random_code = str(long(random() * (10 ** length)))
 
         current_time = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
         self.member.setProperties({'two_factor_hash': '',
@@ -94,7 +94,7 @@ class LocalAuthentication(BaseAuthentication):
             current_time = datetime.now()
             delta = current_time - code_date
 
-            if code == local_code and delta.seconds < LOCAL_CODE_VALID:
+            if code == local_code and delta.total_seconds() < LOCAL_CODE_VALID:
                 valid = True
 
         return valid
@@ -124,37 +124,13 @@ class LocalAuthentication(BaseAuthentication):
             self.status['status'] = u'success'
 
     def execute(self):
-        valid = False
-
-        local_code = self.member.getProperty('local_code', None)
-        local_code_date = self.member.getProperty('local_code_date', None)
+        local_code = self.get_code()
+        valid = self.valid_code(local_code)
         local_code_sent = self.member.getProperty('local_code_sent', False)
-
-        if local_code:
-            code_date = datetime.strptime(local_code_date, "%Y-%m-%dT%H:%M:%S")
-
-            current_time = datetime.now()
-            delta = current_time - code_date
-
-            if delta.seconds < LOCAL_CODE_VALID:
-                valid = True
 
         if valid and local_code_sent:
             self.status['message'] = self.valid_already_sent
             self.status['status'] = u'success'
 
         elif not valid:
-            self.generate_random_code()
-            self.send_code()
-            if self.failure:
-                self.member.setProperties({'two_factor_hash': '',
-                                           'two_factor_hash_date': '',
-                                           'local_code': '',
-                                           'local_code_date': '',
-                                           'local_code_sent': False,
-                                           })
-                self.status['message'] = self.error_sending
-                self.status['status'] = u'error'
-            else:
-                self.status['message'] = self.new_code_sent
-                self.status['status'] = u'success'
+            self.reset_code()
