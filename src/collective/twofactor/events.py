@@ -24,7 +24,6 @@ def check_valid_session(event):
                  '.gif',
                  '.ico',
                  ]
-
     for i in to_ignore:
         if event.request.get('PATH_INFO').endswith(i):
             should_check = False
@@ -32,7 +31,7 @@ def check_valid_session(event):
     if should_check:
         try:
             portal = api.portal.get()
-        except:
+        except:  # pragma: no cover
             # If we cannot get the portal, then just return and ignore
             return
         mt = getToolByName(portal, 'portal_membership')
