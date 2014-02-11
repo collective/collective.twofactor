@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from collective.twofactor.methods.interfaces import IAuthenticationMethod
-from zope.component import getAdapter
+from zope.component import getMultiAdapter
 from plone import api
 from Products.CMFCore.utils import getToolByName
 
@@ -39,7 +39,9 @@ def check_valid_session(event):
 
         method = member.getProperty('two_factor_method', None)
         if method:
-            auth = getAdapter(member, IAuthenticationMethod, name=method)
+            auth = getMultiAdapter((member, member.REQUEST),
+                                   IAuthenticationMethod,
+                                   name=method)
             if not auth.is_valid_session():
                 portal_url = portal.absolute_url()
                 url = ("%s/two-factor-challenge?came_from=%s" %

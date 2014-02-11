@@ -12,7 +12,6 @@ from Products.CMFCore.utils import getToolByName
 from collective.twofactor.testing import \
     COLLECTIVE_TWOFACTOR_INTEGRATION_TESTING
 
-from zope.component import getAdapter
 from zope.component import getMultiAdapter
 from zope.interface import alsoProvides
 
@@ -27,9 +26,9 @@ class TestTwoFactorView(unittest.TestCase):
         alsoProvides(self.request, ITwoFactorLayer)
         self.pm_tool = getToolByName(self.portal, 'portal_membership')
         self.member = self.pm_tool.getAuthenticatedMember()
-        self.local_auth = getAdapter(self.member,
-                                     ILocalAuthenticationMethod,
-                                     'test')
+        self.local_auth = getMultiAdapter((self.member, self.request),
+                                          ILocalAuthenticationMethod,
+                                          'test')
 
     def test_do_not_render_if_no_method_chosen(self):
         self.member.setProperties({'two_factor_method': ''})

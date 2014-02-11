@@ -16,8 +16,9 @@ class BaseAuthentication(object):
     name = ""
     failure = False
 
-    def __init__(self, member):
+    def __init__(self, member, request):
         self.member = member
+        self.request = request
         self.status = {}
 
     def generate_session_hash(self):

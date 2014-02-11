@@ -21,7 +21,7 @@ class TwoFactorMethodsVocabulary(object):
             mem = mt.getAuthenticatedMember()
 
         methods = []
-        for method in getAdapters((mem,), IAuthenticationMethod):
+        for method in getAdapters((mem, mem.REQUEST), IAuthenticationMethod):
             methods.append(SimpleTerm(value=method[0], title=method[1].name))
 
         return SimpleVocabulary(methods)

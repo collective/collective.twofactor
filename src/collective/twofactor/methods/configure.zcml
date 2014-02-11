@@ -7,14 +7,16 @@
     <adapter
         factory=".sms.SMSAuthentication"
         provides=".interfaces.ILocalAuthenticationMethod"
-        for="Products.CMFCore.interfaces.IMemberData"
+        for="Products.CMFCore.interfaces.IMemberData
+             zope.publisher.interfaces.http.IHTTPRequest"
         name="sms"
         />
 
     <adapter
         factory=".email.EmailAuthentication"
         provides=".interfaces.ILocalAuthenticationMethod"
-        for="Products.CMFCore.interfaces.IMemberData"
+        for="Products.CMFCore.interfaces.IMemberData
+             zope.publisher.interfaces.http.IHTTPRequest"
         name="email"
         />
 
@@ -23,14 +25,16 @@
       <adapter
           factory=".sms.SMSAuthentication"
           provides=".interfaces.ILocalAuthenticationMethod"
-          for="Products.remember.interfaces.IReMember"
+          for="Products.remember.interfaces.IReMember
+               zope.publisher.interfaces.http.IHTTPRequest"
           name="sms"
           />
 
       <adapter
           factory=".email.EmailAuthentication"
           provides=".interfaces.ILocalAuthenticationMethod"
-          for="Products.remember.interfaces.IReMember"
+          for="Products.remember.interfaces.IReMember
+               zope.publisher.interfaces.http.IHTTPRequest"
           name="email"
           />
 

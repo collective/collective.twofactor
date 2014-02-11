@@ -12,7 +12,7 @@ from Products.CMFCore.utils import getToolByName
 from collective.twofactor.testing import \
     COLLECTIVE_TWOFACTOR_INTEGRATION_TESTING
 
-from zope.component import getAdapter
+from zope.component import getMultiAdapter
 
 
 class TestLocalAuth(unittest.TestCase):
@@ -22,11 +22,12 @@ class TestLocalAuth(unittest.TestCase):
     def setUp(self):
         self.app = self.layer['app']
         self.portal = self.layer['portal']
+        self.request = self.layer['request']
         self.pm_tool = getToolByName(self.portal, 'portal_membership')
         self.member = self.pm_tool.getAuthenticatedMember()
-        self.local_auth = getAdapter(self.member,
-                                     ILocalAuthenticationMethod,
-                                     'test')
+        self.local_auth = getMultiAdapter((self.member, self.request),
+                                          ILocalAuthenticationMethod,
+                                          'test')
 
     def test_generate_session_hash(self):
         two_factor_hash = self.member.getProperty('two_factor_hash')

@@ -20,6 +20,7 @@ from twilio.rest import TwilioRestClient
 from zope.component import getGlobalSiteManager
 from zope.component.hooks import getSite
 from zope.configuration import xmlconfig
+from zope.publisher.interfaces.http import IHTTPRequest
 
 
 class Messages:
@@ -120,7 +121,7 @@ class CollectivetwofactorLayer(PloneSandboxLayer):
         # Register our testing adapter
         gsm = getGlobalSiteManager()
         gsm.registerAdapter(TestLocalAuth,
-                            (IMemberData,),
+                            (IMemberData, IHTTPRequest),
                             ILocalAuthenticationMethod,
                             'test')
         # Monkey-patch MailHost

@@ -4,7 +4,7 @@ from collective.twofactor import _
 from collective.twofactor.methods.interfaces import IAuthenticationMethod
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
-from zope.component import queryAdapter
+from zope.component import queryMultiAdapter
 
 
 class TwoFactorChallengeView(BrowserView):
@@ -28,7 +28,9 @@ class TwoFactorChallengeView(BrowserView):
         member = mt.getAuthenticatedMember()
         method = member.getProperty('two_factor_method', None)
 
-        self.auth = queryAdapter(member, IAuthenticationMethod, name=method)
+        self.auth = queryMultiAdapter((member, self.request),
+                                      IAuthenticationMethod,
+                                      name=method)
 
         if self.auth:
             status = u""

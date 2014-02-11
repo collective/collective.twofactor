@@ -9,7 +9,7 @@ from Products.CMFCore.utils import getToolByName
 from collective.twofactor.testing import \
     COLLECTIVE_TWOFACTOR_INTEGRATION_TESTING
 
-from zope.component import getAdapter
+from zope.component import getMultiAdapter
 
 
 class TestEmailMethod(unittest.TestCase):
@@ -19,11 +19,12 @@ class TestEmailMethod(unittest.TestCase):
     def setUp(self):
         self.app = self.layer['app']
         self.portal = self.layer['portal']
+        self.request = self.layer['request']
         self.pm_tool = getToolByName(self.portal, 'portal_membership')
         self.member = self.pm_tool.getAuthenticatedMember()
-        self.local_auth = getAdapter(self.member,
-                                     ILocalAuthenticationMethod,
-                                     'email')
+        self.local_auth = getMultiAdapter((self.member, self.request),
+                                          ILocalAuthenticationMethod,
+                                          'email')
 
     def test_email_failed(self):
         self.member.setProperties({'email': 'should@fail.com'})
