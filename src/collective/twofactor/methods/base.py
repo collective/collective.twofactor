@@ -10,6 +10,9 @@ from interfaces import ILocalAuthenticationMethod
 from zope.interface import implements
 
 
+COOKIE_NAME = 'collective.twofactor.two_factor_hash'
+
+
 class BaseAuthentication(object):
     implements(IAuthenticationMethod)
 
@@ -27,6 +30,8 @@ class BaseAuthentication(object):
         h = sha256("%s%s" % (member_id, current_time)).hexdigest()
         self.member.setProperties({'two_factor_hash': h,
                                    'two_factor_hash_date': current_time})
+        # Save hash in a cookie
+        self.request.response.setCookie(COOKIE_NAME, h)
 
     def is_valid_session(self):
         valid = False
@@ -34,8 +39,10 @@ class BaseAuthentication(object):
         session_hash = self.member.getProperty('two_factor_hash', None)
         session_hash_date = self.member.getProperty('two_factor_hash_date',
                                                     None)
+        # Get hash from cookie
+        hash_cookie = self.request.cookies.get(COOKIE_NAME, None)
 
-        if session_hash and session_hash_date:
+        if hash_cookie and (hash_cookie == session_hash) and session_hash_date:
             hash_date = datetime.strptime(session_hash_date,
                                           "%Y-%m-%dT%H:%M:%S")
             member_id = self.member.id

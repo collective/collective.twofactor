@@ -51,6 +51,16 @@ class TestLocalAuth(unittest.TestCase):
     def test_valid_session_hash(self):
         self.assertFalse(self.local_auth.is_valid_session())
         self.local_auth.generate_session_hash()
+        # If we check if this session is valid, we are getting false, because
+        # it should be in a cookie
+        self.assertFalse(self.local_auth.is_valid_session())
+
+        # So let's create the cookie
+        cookie_name = 'collective.twofactor.two_factor_hash'
+        hash_value = self.request.response.cookies[cookie_name]['value']
+        self.request.cookies[cookie_name] = hash_value
+
+        # And now, we should get True
         self.assertTrue(self.local_auth.is_valid_session())
 
         # Override hash generation date
