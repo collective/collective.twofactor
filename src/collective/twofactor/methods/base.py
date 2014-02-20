@@ -33,6 +33,12 @@ class BaseAuthentication(object):
         # Save hash in a cookie
         self.request.response.setCookie(COOKIE_NAME, h)
 
+    def clear_session(self):
+        self.member.setProperties({'two_factor_hash': '',
+                                   'two_factor_hash_date': ''})
+        # Clear cookie
+        self.request.response.expireCookie(COOKIE_NAME)
+
     def is_valid_session(self):
         valid = False
 
@@ -42,7 +48,10 @@ class BaseAuthentication(object):
         # Get hash from cookie
         hash_cookie = self.request.cookies.get(COOKIE_NAME, None)
 
-        if hash_cookie and (hash_cookie == session_hash) and session_hash_date:
+        if (session_hash and
+                hash_cookie and
+                (hash_cookie == session_hash) and
+                session_hash_date):
             hash_date = datetime.strptime(session_hash_date,
                                           "%Y-%m-%dT%H:%M:%S")
             member_id = self.member.id

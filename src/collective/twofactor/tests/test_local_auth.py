@@ -68,6 +68,18 @@ class TestLocalAuth(unittest.TestCase):
         self.member.setProperties({'two_factor_hash_date': hash_date})
         self.assertFalse(self.local_auth.is_valid_session())
 
+    def test_clear_session_hash(self):
+        self.assertFalse(self.local_auth.is_valid_session())
+        self.local_auth.generate_session_hash()
+        # Let's create the cookie
+        cookie_name = 'collective.twofactor.two_factor_hash'
+        hash_value = self.request.response.cookies[cookie_name]['value']
+        self.request.cookies[cookie_name] = hash_value
+        self.assertTrue(self.local_auth.is_valid_session())
+
+        self.local_auth.clear_session()
+        self.assertFalse(self.local_auth.is_valid_session())
+
     def test_generate_random_code(self):
         # Assign some stuff to member properties
         self.member.setProperties({'two_factor_hash': '12345',

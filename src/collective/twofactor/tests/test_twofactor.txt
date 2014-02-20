@@ -42,7 +42,7 @@ When entering valid code, should be redirected to the location from where it was
     Input Text  name=two-factor-token  12345678
     Click Button  Submit
     Location Should Be  ${PLONE_URL}/page-1/document_view
-    
+
 When entering an invalid code, should have a message informing so, and still redirect ok when valid code is entered
     Log In As Site Owner
     Create Page  Page 1  Description
@@ -106,3 +106,23 @@ When came_from is login_form, should redirect to logged_in after valid code is e
     Input Text  name=two-factor-token  12345678
     Click Button  Submit
     Location Should Be  ${PLONE_URL}/logged_in
+
+Logging out should reset session hash
+    Log In As Test User
+    Goto User Preferences
+    Enable Two Factor  Test Authentication Adapter
+    Goto Homepage
+    Location Should Contain  two-factor-challenge
+    Page Should Contain  Two-factor Authentication
+    Page Should Contain  New code has been sent
+    Input Text  name=two-factor-token  12345678
+    Click Button  Submit
+    Location Should Be  ${PLONE_URL}/folder_listing
+    Log out
+    Log In As Test User
+    Location Should Contain  two-factor-challenge
+    Page Should Contain  Two-factor Authentication
+    Page Should Contain  Valid code already sent
+    Input Text  name=two-factor-token  12345678
+    Click Button  Submit
+    Location Should Be  ${PLONE_URL}/folder_listing

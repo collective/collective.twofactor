@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<import-steps>
+  <import-step id="twofactorpas_various" version="0.1"
+               handler="collective.twofactor.setuphandlers.importVarious"
+               title="Clear Two Factor Session Plugin">
+  </import-step>
+</import-steps>
