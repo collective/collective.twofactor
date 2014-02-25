@@ -107,6 +107,36 @@ When came_from is login_form, should redirect to logged_in after valid code is e
     Click Button  Submit
     Location Should Be  ${PLONE_URL}/logged_in
 
+When came_from is logged_out, should redirect to logged_in after valid code is entered
+    Log In As Test User
+    Goto User Preferences
+    Enable Two Factor  Test Authentication Adapter
+    Log out
+    Go to  ${PLONE_URL}/logged_out
+    Page should contain element  __ac_name
+    Input text  __ac_name  ${TEST_USER_NAME}
+    Input text  __ac_password  ${TEST_USER_PASSWORD}
+    Click Button  Log in
+    Location Should Contain  two-factor-challenge
+    Input Text  name=two-factor-token  12345678
+    Click Button  Submit
+    Location Should Be  ${PLONE_URL}/logged_in
+
+When came_from is login_failed, should redirect to logged_in after valid code is entered
+    Log In As Test User
+    Goto User Preferences
+    Enable Two Factor  Test Authentication Adapter
+    Log out
+    Go to  ${PLONE_URL}/login_failed
+    Page should contain element  __ac_name
+    Input text  __ac_name  ${TEST_USER_NAME}
+    Input text  __ac_password  ${TEST_USER_PASSWORD}
+    Click Button  Log in
+    Location Should Contain  two-factor-challenge
+    Input Text  name=two-factor-token  12345678
+    Click Button  Submit
+    Location Should Be  ${PLONE_URL}/logged_in
+
 Logging out should reset session hash
     Log In As Test User
     Goto User Preferences
