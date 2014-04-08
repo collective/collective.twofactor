@@ -2,8 +2,6 @@ import logging
 
 from Products.CMFCore.utils import getToolByName
 
-PROFILE_ID='profile-collective.twofactor:default'
-
 
 def upgrade_from_1_to_2(context, logger=None):
     if logger is None:
@@ -22,6 +20,7 @@ def upgrade_from_1_to_2(context, logger=None):
                                             'local_code_date': '',
                                             'local_code_sent': False,
                                             'two_factor_method': ''})
-                logger.info("Fixed user %s" %member.id)
+
+                logger.info("Fixed user %s" % member.id)
 
     logger.info("All done.")

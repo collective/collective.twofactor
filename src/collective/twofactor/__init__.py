@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from Products.PluggableAuthService.PluggableAuthService import registerMultiPlugin
+from Products.PluggableAuthService.PluggableAuthService import \
+    registerMultiPlugin
 from plugin.logout import addClearTwoFactorPlugin
 from plugin.logout import ClearTwoFactorPlugin
 from plugin.logout import manage_addClearTwoFactorPluginForm

@@ -2,8 +2,6 @@
 
 import unittest2 as unittest
 
-#from Testing.makerequest import makerequest
-
 from collective.twofactor.interfaces import ITwoFactorLayer
 from collective.twofactor.methods.interfaces import ILocalAuthenticationMethod
 

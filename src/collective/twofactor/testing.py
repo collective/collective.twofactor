@@ -109,7 +109,7 @@ class CollectivetwofactorLayer(PloneSandboxLayer):
         )
 
         # Install products that use an old-style initialize() function
-        #z2.installProduct(app, 'Products.PloneFormGen')
+        # z2.installProduct(app, 'Products.PloneFormGen')
 
 #    def tearDownZope(self, app):
 #        # Uninstall products installed above
@@ -125,7 +125,6 @@ class CollectivetwofactorLayer(PloneSandboxLayer):
                             ILocalAuthenticationMethod,
                             'test')
         # Monkey-patch MailHost
-        #import pdb;pdb.set_trace()
         mailhost = getToolByName(portal, 'MailHost')
         mailhost.send = send
         mailhost.smtp_host = 'localhost'
