@@ -4,6 +4,8 @@ from collective.twofactor import _
 from plone.app.users.userdataschema import IUserDataSchema
 from plone.app.users.userdataschema import IUserDataSchemaProvider
 from zope.interface import implements
+from zope.interface import invariant
+from zope.interface import Invalid
 from zope import schema
 
 
@@ -30,6 +32,13 @@ class IEnhancedUserDataSchema(IUserDataSchema):
                                "international format. Example: +15555555555")),
         required=False,
     )
+
+    @invariant
+    def cellPhoneIfSMSchosen(user):
+        if user.two_factor_method and user.two_factor_method == u'sms':
+            if not user.cell_phone:
+                raise Invalid(u"If you choose sms authentication, you need to "
+                              u"specify a cell phone.")
 
 
 class UserDataSchemaProvider(object):

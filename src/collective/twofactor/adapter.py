@@ -153,6 +153,20 @@ if REMEMBER:  # pragma: no cover
         def getFields(self):
             return self.fields
 
+    def validate(self, *args, **kwargs):
+        errors = self._original_validate(*args, **kwargs)
+
+        request = kwargs['REQUEST']
+        if (request.get('two_factor_method') and
+                request.get('two_factor_method') == 'sms'):
+            if not request.get('cell_phone'):
+                errors['cell_phone'] = (
+                    "You need to provide a cell phone if you choose to use "
+                    "the two-factor authentication through SMS"
+                )
+
+        return errors
+
     def getTwoFactorMethod(self):
         return self.getUser().getProperty('two_factor_method', None)
 
@@ -225,3 +239,5 @@ if REMEMBER:  # pragma: no cover
     Member.setLocalCodeDate = setLocalCodeDate
     Member.getLocalCodeSent = getLocalCodeSent
     Member.setLocalCodeSent = setLocalCodeSent
+    Member._original_validate = Member.validate
+    Member.validate = validate
