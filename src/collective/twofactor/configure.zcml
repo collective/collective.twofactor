@@ -64,6 +64,17 @@
       description="Installs the collective.twofactor package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+
+    <genericsetup:upgradeStep
+        title="Fix users with SMS enabled but no cell phone provided"
+        description=""
+        source="1"
+        destination="2"
+        handler="collective.twofactor.upgrades.upgrade_from_1_to_2"
+        sortkey="1"
+        profile="collective.twofactor:default"
+        />
+
   <!-- -*- extra stuff goes here -*- -->
 
 </configure>
