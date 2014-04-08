@@ -1,30 +1,28 @@
 # -*- coding: utf-8 -*-
 
+from collective.twofactor.interfaces import ITwoFactorSettings
 from collective.twofactor.methods.interfaces import IAuthenticationMethod
 from zope.component import getMultiAdapter
 from plone import api
 from Products.CMFCore.utils import getToolByName
+from plone.registry.interfaces import IRegistry
+from zope.component import getUtility
 
 
 def check_valid_session(event):
 
     # Should we check a valid session hash in this request ?
     should_check = True
+    try:
+        registry = getUtility(IRegistry)
+        settings = registry.forInterface(ITwoFactorSettings)
+    except:
+        # By a different number of reasons, we might not be able to get the
+        # registry settings.
+        # Just ignore and do not do any validation
+        return
 
-    # Ignore common resources and the "two-factor-challenge" view.
-    to_ignore = ['two-factor-challenge',
-                 # XXX: Exclude the personal preferences until we can
-                 # provide cell phone validation before saving.
-                 '@@personal-information',
-                 'logout',
-                 '.css',
-                 '.js',
-                 '.png',
-                 '.jpg',
-                 '.gif',
-                 '.ico',
-                 ]
-    for i in to_ignore:
+    for i in settings.to_ignore:
         if event.request.get('PATH_INFO').endswith(i):
             should_check = False
 

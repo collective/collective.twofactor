@@ -14,4 +14,17 @@
         i18n:attributes="title">
         <permission>Manage portal</permission>
     </configlet>
+
+    <configlet title="Two Factor Settings"
+        action_id="twofactor"
+        appId="collective.twofactor"
+        category="Products"
+        condition_expr=""
+        url_expr="string:${portal_url}/@@twofactor-settings"
+        icon_expr="string:++resource++collective.twofactor/twofactor_icon.png"
+        visible="True"
+        i18n:attributes="title">
+        <permission>Manage portal</permission>
+    </configlet>
+
 </object>

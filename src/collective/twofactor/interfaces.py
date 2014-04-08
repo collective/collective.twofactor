@@ -30,6 +30,21 @@ class ITwilioSettings(Interface):
     )
 
 
+class ITwoFactorSettings(Interface):
+    """ Interface for the control panel form.
+    """
+
+    to_ignore = schema.List(
+        title=_(u"Ignore these URLs"),
+        description=_(u"Add here urls you don't want to check for two-factor "
+                      u"auth. Useful for resources, or special pages, like "
+                      u"login and two-factor challenge."),
+        value_type=schema.TextLine(required=True),
+        required=False,
+        default=list(),
+    )
+
+
 class ITwoFactorLayer(Interface):
     """ A layer specific for this add-on product.
     """

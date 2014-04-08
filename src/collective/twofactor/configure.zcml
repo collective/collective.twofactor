@@ -13,7 +13,7 @@
 
   <include package="Products.CMFCore" file="permissions.zcml" />
   <include package="archetypes.schemaextender" />
-    
+
   <include package=".browser" />
   <include package=".methods" />
 
@@ -21,7 +21,7 @@
 
   <adapter zcml:condition="installed Products.remember"
            factory=".adapter.MemberExtender" />
-  
+
   <adapter
       provides=".userdataschema.IEnhancedUserDataSchema"
       for="Products.CMFCore.interfaces.ISiteRoot"
@@ -37,11 +37,18 @@
      for="ZPublisher.interfaces.IPubSuccess"
      handler=".events.check_valid_session"
      />
-  
+
   <browser:page
       name="twilio-settings"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       class=".controlpanel.TwilioSettingsControlPanel"
+      permission="cmf.ManagePortal"
+      />
+
+  <browser:page
+      name="twofactor-settings"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.TwoFactorSettingsControlPanel"
       permission="cmf.ManagePortal"
       />
 

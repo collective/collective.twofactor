@@ -2,11 +2,18 @@
 
 from collective.twofactor import _
 from collective.twofactor.interfaces import ITwilioSettings
+from collective.twofactor.interfaces import ITwoFactorSettings
 from Products.statusmessages.interfaces import IStatusMessage
 from plone.app.registry.browser import controlpanel
 from twilio import TwilioRestException
 from twilio.rest import TwilioRestClient
 from z3c.form import button
+
+
+class TwoFactorSettingsEditForm(controlpanel.RegistryEditForm):
+    schema = ITwoFactorSettings
+    label = _(u'Two Factor Settings')
+    description = _(u'Settings for the Two Factor authentication mechanism')
 
 
 class TwilioSettingsEditForm(controlpanel.RegistryEditForm):
@@ -81,3 +88,7 @@ class TwilioSettingsEditForm(controlpanel.RegistryEditForm):
 
 class TwilioSettingsControlPanel(controlpanel.ControlPanelFormWrapper):
     form = TwilioSettingsEditForm
+
+
+class TwoFactorSettingsControlPanel(controlpanel.ControlPanelFormWrapper):
+    form = TwoFactorSettingsEditForm

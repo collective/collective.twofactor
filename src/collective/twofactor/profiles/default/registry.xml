@@ -30,4 +30,25 @@
     <value></value>
   </record>
 
+  <record field="to_ignore"
+          interface="collective.twofactor.interfaces.ITwoFactorSettings"
+          name="collective.twofactor.interfaces.ITwoFactorSettings.to_ignore">
+    <field type="plone.registry.field.List">
+      <description>Add here urls you don't want to check for two-factor auth. Useful for resources, or special pages, like login and two-factor challenge.</description>
+      <title>Ignore these URLs</title>
+      <value_type type="plone.registry.field.TextLine" />
+    </field>
+    <value>
+      <element>two-factor-challenge</element>
+      <element>@@personal-information</element>
+      <element>logout</element>
+      <element>.css</element>
+      <element>.js</element>
+      <element>.png</element>
+      <element>.jpg</element>
+      <element>.gif</element>
+      <element>.ico</element>
+    </value>
+  </record>
+
 </registry>
