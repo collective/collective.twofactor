@@ -40,7 +40,6 @@
     </field>
     <value>
       <element>two-factor-challenge</element>
-      <element>@@personal-information</element>
       <element>logout</element>
       <element>.css</element>
       <element>.js</element>
