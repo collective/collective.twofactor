@@ -1,182 +1,181 @@
-# Franco Pellegrini <frapell@gmail.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2016-04-06 09:18+0000\n"
-"PO-Revision-Date: 2013-12-09 03:43+0100\n"
-"Last-Translator: Franco Pellegrini <frapell@gmail.com>\n"
-"Language-Team: Spanish\n"
+"PO-Revision-Date: 2016-04-06 11:18+0200\n"
+"Last-Translator: Rene Jochum <info@smile4.at>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: es\n"
-"Language-Name: Spanish\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
-"Language: es\n"
-"X-Generator: Lokalize 1.5\n"
+"Language: de\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #: collective/twofactor/methods/email.py:15
 msgid "A code has already been sent to your email address."
-msgstr "Un código ya ha sido enviado a su dirección de correo electrónico."
+msgstr "Es wurde schon ein code an Ihre E-Mail Adresse geschickt."
 
 #: collective/twofactor/methods/sms.py:18
 msgid "A code has already been sent to your phone."
-msgstr "Un código ya ha sido enviado a su teléfono."
+msgstr "Es wurde schon ein code an Ihre Telefon geschickt."
 
 #: collective/twofactor/methods/email.py:17
 msgid "A new code has been generated and sent to your email address."
-msgstr "Un nuevo código ha sido generado y enviado a su dirección de correo electrónico."
+msgstr "Ein neuer code wurde generiert und an Ihre E-Mail Adresse geschickt."
 
 #: collective/twofactor/methods/sms.py:19
 msgid "A new code has been generated and sent to your phone."
-msgstr "Un nuevo código ha sido generado y enviado a su teléfono."
+msgstr "Ein neuer code wurde generiert und an Ihr Telefon geschickt."
 
 #: collective/twofactor/interfaces.py:13
 msgid "Account SID"
-msgstr "Account SID"
+msgstr "Konto SID"
 
 #: collective/twofactor/interfaces.py:39
 msgid "Add here urls you don't want to check for two-factor auth. Useful for resources, or special pages, like login and two-factor challenge."
-msgstr ""
+msgstr "Fügen Sie hier urls hinzu die Sie nicht über die Zwei-Faktor Authentifizierung schützen möchten. Das ist Nützlich für Ressourcen oder spezial Seiten, wie zum Beispiel login und die Zwei-Faktor Authentifizierung."
 
 #: collective/twofactor/methods/sms.py:20
 msgid "An error has occured while trying to send an SMS to your phone. Please contact the site administrator for assistance. Sorry for the inconvenience."
-msgstr "Un error ha ocurrido mientras se le intentaba enviar un SMS a su teléfono. Por favor contacte al administrador del sitio para asistencia. Disculpe los inconvenientes."
+msgstr "Es ist ein Fehler aufgetreten während dem Versuch eine SMS an Ihre Telefon zu schicken. Bitte kontaktieren Sie Ihren Administrator für Assistenz."
 
 #: collective/twofactor/methods/email.py:19
 msgid "An error has occured while trying to send you an Email. Please contact the site administrator for assistance. Sorry for the inconvenience."
-msgstr "Un error ha ocurrido mientras se le intentaba enviar un Email. Por favor contacte al administrador del sitio para asistencia. Disculpe los inconvenientes."
+msgstr "Es ist ein Fehler aufgetreten während dem Versuch eine E-Mail an Ihre Adresse zu schicken. Bitte kontaktieren Sie Ihren Administrator für Assistenz."
 
 #: collective/twofactor/interfaces.py:19
 msgid "Auth Token"
-msgstr "Auth Token"
+msgstr "Authentifizierungstoken"
 
 #: collective/twofactor/methods/email.py:27
 msgid "Authentication code for ${site_name}"
-msgstr ""
+msgstr "Authentifizierungscode für ${site_name}"
 
 #: collective/twofactor/methods/email.py:13
 msgid "Authentication over Email"
-msgstr "Autenticación por Email"
+msgstr "Authentifizierung über E-Mail"
 
 #: collective/twofactor/methods/sms.py:16
 msgid "Authentication over SMS"
-msgstr "Autenticación por SMS"
+msgstr "Authentifizierung über SMS"
 
 #: collective/twofactor/controlpanel.py:80
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Abbrechen"
 
 #: collective/twofactor/controlpanel.py:74
 msgid "Changes saved"
-msgstr "Cambios guardados"
+msgstr "Änderungen übernehmen"
 
 #: collective/twofactor/browser/twofactor.pt:20
 msgid "Click ${reset_link} to send a new authentication code."
-msgstr ""
+msgstr "Drücken Sie auf ${reset_link} um einen neuen Authentifizierungscode anzufordern."
 
 #: collective/twofactor/controlpanel.py:82
 msgid "Edit cancelled"
-msgstr "Edición cancelada"
+msgstr "Bearbeitung abgebrochen"
 
 #: collective/twofactor/browser/twofactor.pt:33
 msgid "Enter your code here"
-msgstr "Ingrese su código aquí"
+msgstr "Geben Sie hier Ihren Code ein."
 
 #: collective/twofactor/interfaces.py:38
 msgid "Ignore these URLs"
-msgstr ""
+msgstr "Ignoriere diese URLs"
 
 #: collective/twofactor/interfaces.py:25
 msgid "Phone Number"
-msgstr "Número telefónico"
+msgstr "Telefonnummer"
 
 #: collective/twofactor/controlpanel.py:63
 msgid "Save"
-msgstr "Guardar"
+msgstr "Speichern"
 
 #: collective/twofactor/controlpanel.py:22
 msgid "Settings for the Twilio SMS service"
-msgstr "Configuraciones para el servicio de SMS Twilio"
+msgstr "Einstellungen für den Twilio SMS Service"
 
 #: collective/twofactor/controlpanel.py:16
 msgid "Settings for the Two Factor authentication mechanism"
-msgstr ""
+msgstr "Einstellungen für den Zwei-Faktor Authentifizierungsmechanismus "
 
 #: collective/twofactor/browser/twofactor.pt:35
 msgid "Submit"
-msgstr "Enviar"
+msgstr "Absenden"
 
 #: collective/twofactor/controlpanel.py:34
 msgid "The SID or token are invalid and we couldn't authenticate with Twilio, please try again."
-msgstr "El SID de la cuenta o el token son inválidos y no hemos podido autenticar con Twilio, por favor inténtelo nuevamente."
+msgstr "Die SID oder der Token ist ungültig und wir konnten uns nicht bei Twilio authentifizieren, bitte versuchen Sie es erneut."
 
 #: collective/twofactor/browser/twofactor.py:60
 msgid "The code you entered is invalid, please try again."
-msgstr "El código ingresado es inválido, por favor inténtelo nuevamente."
+msgstr "Der eingegebene Code ist ungültig, bitte versuchen Sie es erneut."
 
 #: collective/twofactor/controlpanel.py:54
 msgid "The phone number entered is a valid Twilio number for this account, however, this phone number cannot send SMS. Please make sure to buy a phone number which allows SMS to be sent."
-msgstr "El número telefónico ingresado es un número válido de Twilio, asimismo, este número no puede enviar SMS. Por favor asegúrese de comprar un número que permita el envío de SMS."
+msgstr ""
 
 #: collective/twofactor/controlpanel.py:47
 msgid "The phone number you entered doesn't seem valid for this Twilio account, please make sure you are entering correctly."
-msgstr "El numero telefónico ingresado no parece válido para esta cuenta Twilio, por favor asegúrese que lo está ingresando correctamente."
+msgstr ""
 
 #: collective/twofactor/controlpanel.py:21
 #: collective/twofactor/profiles/default/controlpanel.xml
 msgid "Twilio Settings"
-msgstr "Configuraciones de Twilio"
+msgstr "Twilio Einstellungen"
 
 #: collective/twofactor/controlpanel.py:15
 #: collective/twofactor/profiles/default/controlpanel.xml
 msgid "Two Factor Settings"
-msgstr ""
+msgstr "Zwei Faktor Einstellungen"
 
 #: collective/twofactor/browser/twofactor.pt:12
 msgid "Two-factor Authentication"
-msgstr "Autenticación de dos pasos"
+msgstr "Zwei-Faktor Authentifizierung"
 
 #: collective/twofactor/methods/email.py:31
 #: collective/twofactor/methods/sms.py:32
 msgid "Use this code to authenticate: ${code}"
-msgstr ""
+msgstr "Verwenden Sie diesen Code zur Authentifizierung: ${code}"
 
 #: collective/twofactor/interfaces.py:14
 msgid "Your Twilio Account SID."
-msgstr "Su \"Account SID\" de Twilio."
+msgstr "Ihre Twilio Konto SID"
 
 #: collective/twofactor/interfaces.py:20
 msgid "Your Twilio Auth Token."
-msgstr "Su \"Auth Token\" de Twilio."
+msgstr "Ihr Twilio Authentifizierungstoken"
 
 #: collective/twofactor/interfaces.py:26
 msgid "Your Twilio phone number from where to send SMS. International format, with no special characters. Example: +15555555555"
-msgstr "Su número de teléfono de Twilio desde donde enviar SMS. Formato internacional, sin caracteres especiales. Ejemplo: +15555555555"
+msgstr "Ihre Twilio Telefonnummer von welcher wir das SMS senden. Internationales Format, mit keinen Trennzeichen. Als Beispiel: +43664123456"
 
 #. Default: "Enter your phone number if you choose to receive a code by SMS. Please use international format. Example: +15555555555"
 #: collective/twofactor/userdataschema.py:29
 msgid "help_cell_phone"
-msgstr "Ingrese su número de teléfono si elige recibir un código por SMS. Por favor utilice el formato internacional. Por ejemplo: +15555555555"
+msgstr "Geben Sie hier Ihre Mobilfunknummer wenn Sie die Authentifizierung über SMS ausgewählt haben. Bitte verwende Sie das Internationale Format. Als Beispiel: +43664123456"
 
 #. Default: "Choose the method you would like to use for Two-factor authentication"
 #: collective/twofactor/userdataschema.py:20
 msgid "help_two_factor_method"
-msgstr "Seleccione el método que desea para la autenticación de dos pasos"
+msgstr "Wählen Sie die Methode zur Zwei-Faktor Authentifizierung aus"
 
 #: collective/twofactor/browser/twofactor.pt:21
 msgid "here"
-msgstr "aquí"
+msgstr "hier"
 
 #. Default: "Cell phone number"
 #: collective/twofactor/userdataschema.py:28
 msgid "label_cell_phone"
-msgstr "Número de teléfono móvil"
+msgstr "Handynummer"
 
 #. Default: "Two-factor authentication method"
 #: collective/twofactor/userdataschema.py:18
 msgid "two_factor_method"
-msgstr "Método de autenticación de dos pasos"
+msgstr "Zwei-Faktor Authentifizierungsmethode"
 

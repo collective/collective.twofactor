@@ -4,6 +4,9 @@ Changelog
 0.1-dev (unreleased)
 --------------------
 
+- Add German Translations, fix some strings to make them translatable.
+  [pcdummy]
+
 - #3 Remove @@personal-information from the 2-Factor ignore list.
   This way the user isn't able to surf to /@@personal-information while
   he didn't put its SMS/EMail code in.

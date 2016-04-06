@@ -5,6 +5,7 @@ from base import LocalAuthentication
 from collective.twofactor import _
 from plone import api
 from zope.component.hooks import getSite
+from zope.i18n import translate
 
 
 class EmailAuthentication(LocalAuthentication):
@@ -23,8 +24,14 @@ class EmailAuthentication(LocalAuthentication):
         self.failure = False
         site_name = api.portal.get().title
 
-        subject = _(u"Authentication code for %s" % site_name)
-        message = _("Use this code to authenticate: %s" % self.get_code())
+        subject = translate(_(
+            u"Authentication code for ${site_name}",
+            mapping={'site_name': site_name}
+        ), context=self.request)
+        message = translate(_(
+            u"Use this code to authenticate: ${code}",
+            mapping={'code': self.get_code()}
+        ), context=self.request)
 
         user_email = self.member.getProperty('email', None)
         try:

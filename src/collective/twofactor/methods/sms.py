@@ -8,6 +8,7 @@ from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
 from zope.component.hooks import getSite
 from twilio.rest import TwilioRestClient
+from zope.i18n import translate
 
 
 class SMSAuthentication(LocalAuthentication):
@@ -28,7 +29,10 @@ class SMSAuthentication(LocalAuthentication):
         client = TwilioRestClient(settings.account_sid, settings.auth_token)
 
         user_phone = self.member.getProperty('cell_phone', None)
-        message = _("Use this code to authenticate: %s" % self.get_code())
+        message = translate(_(
+            "Use this code to authenticate: ${code}",
+            mapping={'code': self.get_code()}
+        ), context=self.request)
 
         try:
             client.sms.messages.create(to=user_phone,
