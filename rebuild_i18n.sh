@@ -8,17 +8,17 @@ SOURCE=`find . -type d | grep -m 1 "collective/twofactor"`
 LOCALES="$SOURCE/locales";
 
 # rebuild pot file for package's domain and merge it with any manual translations needed
-bin/i18ndude rebuild-pot --pot $LOCALES/$I18NDOMAIN.pot --merge $LOCALES/manual.pot --create $I18NDOMAIN $SOURCE
+i18ndude rebuild-pot --pot $LOCALES/$I18NDOMAIN.pot --merge $LOCALES/manual.pot --create $I18NDOMAIN $SOURCE
 
 # synchronise translations for package's domain
 for po in $LOCALES/*/LC_MESSAGES/$I18NDOMAIN.po; do
-    bin/i18ndude sync --pot $LOCALES/$I18NDOMAIN.pot $po
+    i18ndude sync --pot $LOCALES/$I18NDOMAIN.pot $po
 done
 
 # rebuild pot file for Plone's domain
-bin/i18ndude rebuild-pot --pot $LOCALES/plone.pot --create plone $SOURCE/configure.zcml $SOURCE/profiles/default
+i18ndude rebuild-pot --pot $LOCALES/plone.pot --create plone $SOURCE/configure.zcml $SOURCE/profiles/default
 
 # synchronise translations for Plone's domain
 for po in $LOCALES/*/LC_MESSAGES/plone.po; do
-    bin/i18ndude sync --pot $LOCALES/plone.pot $po
+    i18ndude sync --pot $LOCALES/plone.pot $po
 done

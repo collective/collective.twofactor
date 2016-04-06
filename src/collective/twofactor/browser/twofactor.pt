@@ -21,7 +21,7 @@
                 <a href=""
                   id="reset_two_factor_token"
                   tal:attributes="href string:${request/URL}?reset_code=1"
-                  i18n:translate="">here</a></span> to reset your authentication code.</span>
+                  i18n:translate="">here</a></span> to send a new authentication code.</span>
             </p>
           </div>
           <div class="ask-token">

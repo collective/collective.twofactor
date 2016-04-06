@@ -4,21 +4,24 @@ Changelog
 0.1-dev (unreleased)
 --------------------
 
+- Add German Translations, fix some strings to make them translatable.
+  [pcdummy]
+
 - Package created using templer
   [frapell]
 
 - Include dependency with the Twilio service wrapper
   [frapell]
-  
+
 - Include two-factor authentication over Email and SMS.
   [frapell]
-  
+
 - Subscribe to the IPubSuccess event for checking if the current member
   needs to be asked for an authentication token
   [frapell]
-  
+
 - Create a control panel for managing Twilio settings.
   [frapell]
-  
+
 - Use schemaextender to support Products.remember
   [frapell]
